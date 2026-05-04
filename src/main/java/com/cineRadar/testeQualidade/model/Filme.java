@@ -9,13 +9,15 @@ public class Filme {
     private Genero genero;
     private ClassificaçãoEtaria classificaçãoEtaria;
     private Idioma idioma;
+    private boolean assistido;
 
 
-    public Filme(String nome, Genero genero, ClassificaçãoEtaria classificaçãoEtaria, Idioma idioma) {
+    public Filme(String nome, Genero genero, ClassificaçãoEtaria classificaçãoEtaria, Idioma idioma ,boolean assistido) {
         this.nome = nome;
         this.genero = genero;
         this.classificaçãoEtaria = classificaçãoEtaria;
         this.idioma = idioma;
+        this.assistido = false;
     }
 
     public String getNome() {
@@ -48,5 +50,13 @@ public class Filme {
 
     public void setIdioma(Idioma idioma) {
         this.idioma = idioma;
+    }
+
+    public boolean getAssistido() {
+        return assistido;
+    }
+
+    public void setAssistido(boolean assistido) {
+        this.assistido = assistido;
     }
 }
