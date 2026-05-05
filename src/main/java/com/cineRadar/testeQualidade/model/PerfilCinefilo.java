@@ -7,6 +7,9 @@ public class PerfilCinefilo {
     private Genero genero;
     private ClassificaçãoEtaria classificaçãoEtaria;
 
-
+    public PerfilCinefilo(Genero genero, ClassificaçãoEtaria classificaçãoEtaria) {
+        this.genero = genero;
+        this.classificaçãoEtaria = classificaçãoEtaria;
+    }
 
 }

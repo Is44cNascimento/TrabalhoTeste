@@ -10,7 +10,7 @@ public class Usuario {
     private Filme filme;
     protected String[] filmeAssistido;
 
-    public Usuario(String nome, int idade, PerfilCinefilo perfilCinefilo) {
+    public Usuario(String nome, int idade, final PerfilCinefilo perfilCinefilo) {
         this.nome = nome;
         this.idade = idade;
         this.perfilCinefilo = perfilCinefilo;
