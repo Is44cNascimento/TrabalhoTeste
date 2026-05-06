@@ -1,26 +1,21 @@
 package com.cineRadar.testeQualidade.model.enums;
 
-import com.cineRadar.testeQualidade.model.Filme;
-import com.cineRadar.testeQualidade.model.Usuario;
+public enum ClassificacaoEtaria {
 
-public class ClassificacaoEtaria {
+    LIVRE(0),
+    DEZ(10),
+    DOZE(12),
+    QUATORZE(14),
+    DEZESSEIS(16),
+    DEZOITO(18);
 
-    private Usuario usuario;
-    private Filme filme;
+    private final int idadeMinima;
 
-    public ClassificacaoEtaria() {
+    ClassificacaoEtaria(int idadeMinima) {
+        this.idadeMinima = idadeMinima;
     }
 
-    public ClassificacaoEtaria(Usuario usuario, Filme filme) {
-        this.usuario = usuario;
-        this.filme = filme;
+    public int getIdadeMinima() {
+        return idadeMinima;
     }
-
-    public boolean classificar() {
-       if(usuario.getIdade() <= filme.getIdade()){
-           return true;
-       }else return false;
-
-    }
-
 }
