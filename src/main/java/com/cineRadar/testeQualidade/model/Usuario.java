@@ -54,4 +54,9 @@ public class Usuario {
     public void addFilmeAssistido(Filme filme) {
         filmeAssistido.add(filme);
     }
+
+    public void retunPerfil(){
+
+    }
+
 }
