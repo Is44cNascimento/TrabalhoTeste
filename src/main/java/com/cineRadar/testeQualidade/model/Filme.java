@@ -1,23 +1,36 @@
 package com.cineRadar.testeQualidade.model;
 
-import com.cineRadar.testeQualidade.model.enums.ClassificaçãoEtaria;
+import com.cineRadar.testeQualidade.model.enums.ClassificacaoEtaria;
 import com.cineRadar.testeQualidade.model.enums.Genero;
 import com.cineRadar.testeQualidade.model.enums.Idioma;
 
 public class Filme {
     private String nome;
     private Genero genero;
-    private ClassificaçãoEtaria classificaçãoEtaria;
+    private int idade;
     private Idioma idioma;
     private boolean assistido;
 
 
-    public Filme(String nome, Genero genero, ClassificaçãoEtaria classificaçãoEtaria, Idioma idioma ,boolean assistido) {
+    public Filme(String nome, Genero genero, int idade, Idioma idioma , boolean assistido) {
         this.nome = nome;
         this.genero = genero;
-        this.classificaçãoEtaria = classificaçãoEtaria;
+        this.idade = idade;
         this.idioma = idioma;
         this.assistido = false;
+    }
+
+
+    public boolean isAssistido() {
+        return assistido;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
     public String getNome() {
@@ -28,13 +41,6 @@ public class Filme {
         this.nome = nome;
     }
 
-    public ClassificaçãoEtaria getClassificaçãoEtaria() {
-        return classificaçãoEtaria;
-    }
-
-    public void setClassificaçãoEtaria(ClassificaçãoEtaria classificaçãoEtaria) {
-        this.classificaçãoEtaria = classificaçãoEtaria;
-    }
 
     public Genero getGenero() {
         return genero;
