@@ -39,6 +39,9 @@ public class Usuario {
         this.nome = nome;
     }
 
+    public ArrayList<Filme> getFilmeAssistido() {
+        return filmeAssistido;
+    }
 
     public Boolean Assistir (Filme filme){
 

@@ -10,16 +10,20 @@ public class Filme {
     private Genero genero;
     private ClassificacaoEtaria classificacaoEtaria;
     private Idioma idioma;
+    private int minutos;
     private boolean assistido;
 
 
-    public Filme(String nome, Genero genero, ClassificacaoEtaria classificacaoEtaria, Idioma idioma , boolean assistido) {
+    public Filme(String nome, Genero genero, int classificacaoEtaria, Idioma idioma , boolean assistido, int minutos) {
         this.nome = nome;
         this.genero = genero;
         this.classificacaoEtaria = classificacaoEtaria;
         this.idioma = idioma;
+        this.minutos = minutos;
         this.assistido = false;
     }
+
+
 
 
     public boolean isAssistido() {
@@ -67,6 +71,11 @@ public class Filme {
         this.assistido = assistido;
     }
 
+    public int getMinutos() {
+        return minutos;
+    }
 
-
+    public void setMinutos(int minutos) {
+        this.minutos = minutos;
+    }
 }
