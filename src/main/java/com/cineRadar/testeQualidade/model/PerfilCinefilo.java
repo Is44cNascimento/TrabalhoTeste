@@ -31,10 +31,7 @@ public class PerfilCinefilo {
         this.notasFilmes = new HashMap<>();
     }
 
-    public PerfilCinefilo(Genero genero, ClassificaçãoEtaria classificaçãoEtaria) {
-        this.genero = genero;
-        this.classificaçãoEtaria = classificaçãoEtaria;
-    }
+
 
     public void definirPesoGenero(Genero genero, double peso) {
         validarPeso(peso);
