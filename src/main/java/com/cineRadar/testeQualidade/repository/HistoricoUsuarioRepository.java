@@ -1,4 +1,4 @@
-package com.cineRadar.testeQualidade.service;
+package com.cineRadar.testeQualidade.repository;
 
 public interface HistoricoUsuarioRepository {
 }
