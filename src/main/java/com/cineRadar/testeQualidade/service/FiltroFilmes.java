@@ -5,7 +5,7 @@ import com.cineRadar.testeQualidade.model.PerfilCinefilo;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class FiltroFilmes {
 
@@ -14,15 +14,13 @@ public class FiltroFilmes {
             return Collections.emptyList();
         }
 
-        return catalogo.stream()
-                .filter(filme -> !perfil.jaAssistiu(filme.getNome()))
-                .filter(filme -> classificacaoPermitida(filme, perfil))
-                .filter(filme -> perfil.aceitaIdioma(filme.getIdioma()))
-                .filter(filme -> perfil.obterPesoGenero(filme.getGenero()) > 0.0)
-                .collect(Collectors.toList());
-    }
+        Objects.requireNonNull(perfil, "perfil não pode ser null");
 
-    private boolean classificacaoPermitida(Filme filme, PerfilCinefilo perfil) {
-        return filme.getClassificacaoEtaria() <= perfil.getClassificacaoMaxima().getIdadeMinima();
+        return catalogo.stream()
+                .filter(filme -> !perfil.getHistoricoAssistidos().contains(filme.getId()))
+                .filter(filme -> perfil.getClassificacaoEtariaMaxima().aceita(filme.getClassificacaoEtaria()))
+                .filter(filme -> perfil.getIdiomasAceitos().contains(filme.getIdioma()))
+                .filter(filme -> filme.getGeneros().stream().noneMatch(genero -> perfil.getPesoGenero(genero) == 0.0))
+                .toList();
     }
 }

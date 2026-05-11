@@ -4,78 +4,103 @@ import com.cineRadar.testeQualidade.model.enums.ClassificacaoEtaria;
 import com.cineRadar.testeQualidade.model.enums.Genero;
 import com.cineRadar.testeQualidade.model.enums.Idioma;
 
-public class Filme {
+import java.util.Collection;
+import java.util.Objects;
+import java.util.Set;
 
-    private String nome;
-    private Genero genero;
-    private ClassificacaoEtaria classificacaoEtaria;
-    private Idioma idioma;
-    private int minutos;
-    private boolean assistido;
+public final class Filme {
 
+    private final String id;
+    private final String titulo;
+    private final int ano;
+    private final int duracaoMinutos;
+    private final Set<Genero> generos;
+    private final ClassificacaoEtaria classificacaoEtaria;
+    private final Idioma idioma;
+    private final int popularidade;
 
-    public Filme(String nome, Genero genero, int classificacaoEtaria, Idioma idioma , boolean assistido, int minutos) {
-        this.nome = nome;
-        this.genero = genero;
-        this.classificacaoEtaria = classificacaoEtaria;
-        this.idioma = idioma;
-        this.minutos = minutos;
-        this.assistido = false;
+    public Filme(String id,
+                 String titulo,
+                 int ano,
+                 int duracaoMinutos,
+                 Collection<Genero> generos,
+                 ClassificacaoEtaria classificacaoEtaria,
+                 Idioma idioma,
+                 int popularidade) {
+        this.id = validarTexto(id, "id");
+        this.titulo = validarTexto(titulo, "titulo");
+        if (ano <= 1800) {
+            throw new IllegalArgumentException("Ano inválido");
+        }
+        if (duracaoMinutos <= 0) {
+            throw new IllegalArgumentException("Duração deve ser positiva");
+        }
+        if (popularidade < 0 || popularidade > 100) {
+            throw new IllegalArgumentException("Popularidade deve estar entre 0 e 100");
+        }
+        this.ano = ano;
+        this.duracaoMinutos = duracaoMinutos;
+        this.generos = Set.copyOf(Objects.requireNonNull(generos, "generos não pode ser null"));
+        if (this.generos.isEmpty()) {
+            throw new IllegalArgumentException("Filme deve possuir ao menos um gênero");
+        }
+        this.classificacaoEtaria = Objects.requireNonNull(classificacaoEtaria, "classificacaoEtaria não pode ser null");
+        this.idioma = Objects.requireNonNull(idioma, "idioma não pode ser null");
+        this.popularidade = popularidade;
     }
 
-
-
-
-    public boolean isAssistido() {
-        return assistido;
+    private static String validarTexto(String valor, String campo) {
+        if (valor == null || valor.isBlank()) {
+            throw new IllegalArgumentException(campo + " não pode ser vazio");
+        }
+        return valor;
     }
 
-    public int getClassificacaoEtaria() {
-        return classificacaoEtaria.getIdadeMinima();
+    public String getId() {
+        return id;
     }
 
-    public void setClassificacaoEtaria(ClassificacaoEtaria classificacaoEtaria) {
-        this.classificacaoEtaria = classificacaoEtaria;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public String getNome() {
-        return nome;
+    public int getAno() {
+        return ano;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public int getDuracaoMinutos() {
+        return duracaoMinutos;
     }
 
-
-    public Genero getGenero() {
-        return genero;
+    public Set<Genero> getGeneros() {
+        return generos;
     }
 
-    public void setGenero(Genero genero) {
-        this.genero = genero;
+    public ClassificacaoEtaria getClassificacaoEtaria() {
+        return classificacaoEtaria;
     }
 
     public Idioma getIdioma() {
         return idioma;
     }
 
-    public void setIdioma(Idioma idioma) {
-        this.idioma = idioma;
+    public int getPopularidade() {
+        return popularidade;
     }
 
-    public boolean getAssistido() {
-        return assistido;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Filme filme)) {
+            return false;
+        }
+        return id.equals(filme.id);
     }
 
-    public void setAssistido(boolean assistido) {
-        this.assistido = assistido;
-    }
-
-    public int getMinutos() {
-        return minutos;
-    }
-
-    public void setMinutos(int minutos) {
-        this.minutos = minutos;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

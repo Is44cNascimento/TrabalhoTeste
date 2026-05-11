@@ -1,35 +1,28 @@
 package com.cineRadar.testeQualidade.model;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Objects;
 
-public class Recomendacao {
+public final class Recomendacao {
 
-    public Object recomendar(Usuario usuario, Filme filme ) {
-        AtomicInteger score = new AtomicInteger();
+    private final Filme filme;
+    private final int score;
+    private final String justificativa;
 
-       Filme filmeRetorno = new Filme(filme.getNome(), filme.getGenero(), filme.getClassificacaoEtaria(),filme.getIdioma(), filme.isAssistido(), filme.getMinutos());
+    public Recomendacao(Filme filme, int score, String justificativa) {
+        this.filme = Objects.requireNonNull(filme, "filme não pode ser null");
+        this.score = Math.max(0, Math.min(100, score));
+        this.justificativa = Objects.requireNonNull(justificativa, "justificativa não pode ser null");
+    }
 
-        usuario.getFilmeAssistido().forEach(f -> {
-            if (f.getGenero() == filme.getGenero()) {
-                score.addAndGet(25);
-            }
-            if (f.getIdioma() == filme.getIdioma()) {
-                score.addAndGet(25);
-            }
-            if(f.getMinutos() > filme.getMinutos() - 10 && f.getMinutos() < filme.getMinutos() + 10){
-                score.addAndGet(30);
-            }
-            if(f.getClassificacaoEtaria() == filme.getClassificacaoEtaria()){
-                score.addAndGet(20);
-            }
+    public Filme getFilme() {
+        return filme;
+    }
 
+    public int getScore() {
+        return score;
+    }
 
-        });
-
-        if (score.get() <= 50) {
-            return null;
-        }
-        else return filmeRetorno;
-
+    public String getJustificativa() {
+        return justificativa;
     }
 }

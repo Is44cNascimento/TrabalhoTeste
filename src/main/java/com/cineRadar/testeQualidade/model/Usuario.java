@@ -1,65 +1,48 @@
 package com.cineRadar.testeQualidade.model;
 
-import java.util.ArrayList;
+import java.util.Objects;
 
 public class Usuario {
-    private String nome;
-    private int idade;
-    private PerfilCinefilo perfilCinefilo;
-    protected ArrayList<Filme> filmeAssistido;
 
+    private final String nome;
+    private final int idade;
+    private final PerfilCinefilo perfilCinefilo;
+    private boolean notificacoesHabilitadas;
 
-    public Usuario(String nome, int idade, final PerfilCinefilo perfilCinefilo) {
+    public Usuario(String nome, int idade, PerfilCinefilo perfilCinefilo) {
+        this(nome, idade, perfilCinefilo, false);
+    }
+
+    public Usuario(String nome, int idade, PerfilCinefilo perfilCinefilo, boolean notificacoesHabilitadas) {
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("nome não pode ser vazio");
+        }
+        if (idade < 0) {
+            throw new IllegalArgumentException("idade não pode ser negativa");
+        }
         this.nome = nome;
         this.idade = idade;
-        this.perfilCinefilo = perfilCinefilo;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public PerfilCinefilo getPerfilCinefilo() {
-        return perfilCinefilo;
-    }
-
-    public void setPerfilCinefilo(PerfilCinefilo perfilCinefilo) {
-        this.perfilCinefilo = perfilCinefilo;
+        this.perfilCinefilo = Objects.requireNonNull(perfilCinefilo, "perfilCinefilo não pode ser null");
+        this.notificacoesHabilitadas = notificacoesHabilitadas;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public int getIdade() {
+        return idade;
     }
 
-    public ArrayList<Filme> getFilmeAssistido() {
-        return filmeAssistido;
+    public PerfilCinefilo getPerfilCinefilo() {
+        return perfilCinefilo;
     }
 
-    public Boolean Assistir (Filme filme){
-
-
-        if (this.idade <= filme.getClassificacaoEtaria()  ) {
-            addFilmeAssistido(filme);
-            return true;
-        }
-        return false;
+    public boolean isNotificacoesHabilitadas() {
+        return notificacoesHabilitadas;
     }
 
-
-    public void addFilmeAssistido(Filme filme) {
-        filmeAssistido.add(filme);
+    public void setNotificacoesHabilitadas(boolean notificacoesHabilitadas) {
+        this.notificacoesHabilitadas = notificacoesHabilitadas;
     }
-
-    public void retunPerfil(){
-
-    }
-
 }
