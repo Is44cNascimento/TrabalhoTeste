@@ -6,7 +6,7 @@ public class Usuario {
     private String nome;
     private int idade;
     private PerfilCinefilo perfilCinefilo;
-    protected ArrayList<Filme> filmeAssistido;
+    protected ArrayList<Filme> filmeAssistido = new ArrayList<>();
 
 
     public Usuario(String nome, int idade, final PerfilCinefilo perfilCinefilo) {
@@ -44,9 +44,7 @@ public class Usuario {
     }
 
     public Boolean Assistir (Filme filme){
-
-
-        if (this.idade <= filme.getClassificacaoEtaria()  ) {
+        if (filme.getClassificacaoEtaria().permiteIdade(this.idade)) {
             addFilmeAssistido(filme);
             return true;
         }
@@ -59,7 +57,14 @@ public class Usuario {
     }
 
     public void retunPerfil(){
-
+        System.out.println("Perfil retornado");
+        System.out.println("Nome: " + this.nome);
+        System.out.println("Idade: " + this.idade);
+        System.out.println("PerfilCinefilo: " + this.perfilCinefilo);
+        System.out.println("FilmeAssistido: " + filmeAssistido);
     }
 
+    public boolean isNotificacoesHabilitadas() {
+        return true;
+    }
 }

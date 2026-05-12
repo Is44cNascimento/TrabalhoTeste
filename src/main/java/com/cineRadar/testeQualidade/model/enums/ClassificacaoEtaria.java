@@ -15,7 +15,20 @@ public enum ClassificacaoEtaria {
         this.idadeMinima = idadeMinima;
     }
 
+
     public int getIdadeMinima() {
         return idadeMinima;
+    }
+
+    public boolean permiteIdade(int idade) {
+        return idade >= idadeMinima;
+    }
+
+    public boolean aceita(ClassificacaoEtaria outra) {
+        return outra.idadeMinima <= this.idadeMinima;
+    }
+
+    public boolean maisRestritivaQue(ClassificacaoEtaria outra) {
+        return this.idadeMinima > outra.idadeMinima;
     }
 }
