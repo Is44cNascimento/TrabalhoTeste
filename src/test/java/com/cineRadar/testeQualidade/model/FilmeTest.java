@@ -1,17 +1,17 @@
 package com.cineRadar.testeQualidade.model;
 
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 import com.cineRadar.testeQualidade.model.enums.ClassificacaoEtaria;
 import com.cineRadar.testeQualidade.model.enums.Genero;
 import com.cineRadar.testeQualidade.model.enums.Idioma;
 
 
 
-import org.junit.jupiter.api.*;
-
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Set;
-import static org.junit.jupiter.api.Assertions.*;
+
+
 
 
 @Tag("unitario")
