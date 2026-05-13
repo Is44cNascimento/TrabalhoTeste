@@ -3,17 +3,16 @@ package com.cineRadar.testeQualidade.model;
 import com.cineRadar.testeQualidade.model.enums.ClassificacaoEtaria;
 import com.cineRadar.testeQualidade.model.enums.Genero;
 import com.cineRadar.testeQualidade.model.enums.Idioma;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+
+
+
+import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.*;
+
 
 @Tag("unitario")
 @DisplayName("Filme")
