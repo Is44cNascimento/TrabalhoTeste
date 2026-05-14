@@ -58,7 +58,7 @@ mvn spring-boot:run
 - **RecomendadorService**: orquestra catálogo, filtros, score, ordenação, registro de histórico e notificação.
 - **FiltroFilmes**: remove filmes não elegíveis para o perfil.
 - **CalculadoraScore**: calcula score e justificativa da recomendação.
-- **CtalogoMock**: catálogo mockado de filmes para uso em testes/cenários locais.
+- **Classe `CtalogoMock`**: catálogo mockado de filmes para uso em testes/cenários locais.
 
 ## Observações
 
