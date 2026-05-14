@@ -3,7 +3,8 @@
 **CineRadar** é um sistema recomendador de filmes por perfil cinéfilo.  
 O projeto analisa preferências do usuário, filtra filmes incompatíveis e gera uma lista ranqueada com as melhores recomendações.
 
-> **Slogan:** O filme certo antes da rolagem infinita.
+> **Slogan:** O seu filme de amanhã, hoje
+
 
 ---
 
