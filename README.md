@@ -11,7 +11,7 @@ O projeto analisa preferências do usuário, filtra filmes incompatíveis e gera
 
 - Pedro Henrique Bispo
 - Isaac Nascimento
-- Katia *(sobrenome pendente)*
+- Katia Noblat
 
 ---
 
